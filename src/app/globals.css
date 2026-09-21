@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f2f0e9;
+  --foreground: #20241f;
+
+  /*
+   * Palette tuned to this project specifically: it's sold on low-density,
+   * 75%-open-space grounds (six towers on 8.5 acres), not on marble-lobby
+   * luxury — so the dominant tones are a deep pine/teal (structure, trust)
+   * and a warm stone neutral (the open ground), with terracotta demoted to
+   * a single deliberate accent rather than the recurring CTA color.
+   */
+  --color-sky-50: #f0f6f7;
+  --color-sky-100: #dcebee;
+  --color-sky-400: #5b93a0;
+  --color-sky-500: #3f7784;
+  --color-sky-600: #305e69;
+  --color-sky-700: #234750;
+  --color-sky-800: #17282c;
+
+  --color-sage-50: #f3f6ef;
+  --color-sage-100: #e3ecd8;
+  --color-sage-400: #8ea86a;
+  --color-sage-500: #718c4d;
+  --color-sage-600: #5a7040;
+
+  --color-earth-50: #faf3ea;
+  --color-earth-100: #f1e0c8;
+  --color-earth-400: #c98f4e;
+  --color-earth-500: #b0713a;
+  --color-earth-600: #8f5a2d;
+
+  --color-sand-50: #f2f0e9;
+  --color-sand-100: #e8e3d5;
+  --color-sand-900: #20241f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
+  --color-sky-50: var(--color-sky-50);
+  --color-sky-100: var(--color-sky-100);
+  --color-sky-400: var(--color-sky-400);
+  --color-sky-500: var(--color-sky-500);
+  --color-sky-600: var(--color-sky-600);
+  --color-sky-700: var(--color-sky-700);
+  --color-sky-800: var(--color-sky-800);
+
+  --color-sage-50: var(--color-sage-50);
+  --color-sage-100: var(--color-sage-100);
+  --color-sage-400: var(--color-sage-400);
+  --color-sage-500: var(--color-sage-500);
+  --color-sage-600: var(--color-sage-600);
+
+  --color-earth-50: var(--color-earth-50);
+  --color-earth-100: var(--color-earth-100);
+  --color-earth-400: var(--color-earth-400);
+  --color-earth-500: var(--color-earth-500);
+  --color-earth-600: var(--color-earth-600);
+
+  --color-sand-50: var(--color-sand-50);
+  --color-sand-100: var(--color-sand-100);
+  --color-sand-900: var(--color-sand-900);
+
+  /* One restrained entrance animation for the hero — not used elsewhere. */
+  --animate-fade-in: fade-in 0.7s ease-out both;
+
+  /* Minimal entrance for the lead popup card. */
+  --animate-popup-in: popup-in 0.2s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-popup-in {
+    animation: none;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
