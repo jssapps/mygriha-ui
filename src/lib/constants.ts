@@ -27,4 +27,4 @@ export const WHATSAPP_NUMBER = "919999999999";
 export const CONTACT_PHONE_DISPLAY = "+91 99999 99999";
 // PLACEHOLDER — replace with the real contact number before launch (tel: format).
 export const CONTACT_PHONE_TEL = "+919999999999";
-export const CONTACT_EMAIL = "bangalorenest@gmail.com";
+export const CONTACT_EMAIL = "admin@mygriha.in";
