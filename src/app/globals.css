@@ -1,39 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f2f0e9;
-  --foreground: #20241f;
+  --background: #faf7f5;
+  --foreground: #1c2b2d;
 
   /*
-   * Palette tuned to this project specifically: it's sold on low-density,
-   * 75%-open-space grounds (six towers on 8.5 acres), not on marble-lobby
-   * luxury — so the dominant tones are a deep pine/teal (structure, trust)
-   * and a warm stone neutral (the open ground), with terracotta demoted to
-   * a single deliberate accent rather than the recurring CTA color.
+   * Palette follows the My Griha "Lotus Home" logo:
+   *   sky   = pond teal (the house + wordmark) — structure, trust, primary CTAs
+   *   sage  = lotus-leaf green — secondary highlights and positive states
+   *   earth = lotus pink — the single warm accent, used sparingly
+   *   sand  = soft blush-cream neutrals for page ground, borders and ink
+   * Token names are kept from the original palette so every component picks
+   * up the new colors without class changes.
    */
-  --color-sky-50: #f0f6f7;
-  --color-sky-100: #dcebee;
-  --color-sky-400: #5b93a0;
-  --color-sky-500: #3f7784;
-  --color-sky-600: #305e69;
-  --color-sky-700: #234750;
-  --color-sky-800: #17282c;
+  --color-sky-50: #eef7f6;
+  --color-sky-100: #d5ecea;
+  --color-sky-400: #4fa9a6;
+  --color-sky-500: #2f8c8c;
+  --color-sky-600: #1f7072;
+  --color-sky-700: #14555c;
+  --color-sky-800: #0e3e43;
+  --color-sky-900: #0a2e32;
 
-  --color-sage-50: #f3f6ef;
-  --color-sage-100: #e3ecd8;
-  --color-sage-400: #8ea86a;
-  --color-sage-500: #718c4d;
-  --color-sage-600: #5a7040;
+  --color-sage-50: #f1f8ec;
+  --color-sage-100: #ddefd0;
+  --color-sage-400: #7cc05a;
+  --color-sage-500: #3e8e47;
+  --color-sage-600: #2f7038;
 
-  --color-earth-50: #faf3ea;
-  --color-earth-100: #f1e0c8;
-  --color-earth-400: #c98f4e;
-  --color-earth-500: #b0713a;
-  --color-earth-600: #8f5a2d;
+  --color-earth-50: #fdf0f5;
+  --color-earth-100: #fad9e6;
+  --color-earth-400: #f27aa6;
+  --color-earth-500: #d6386f;
+  --color-earth-600: #b02d5f;
 
-  --color-sand-50: #f2f0e9;
-  --color-sand-100: #e8e3d5;
-  --color-sand-900: #20241f;
+  --color-sand-50: #faf7f5;
+  --color-sand-100: #efe8e6;
+  --color-sand-900: #1c2b2d;
 }
 
 @theme inline {
@@ -49,6 +52,7 @@
   --color-sky-600: var(--color-sky-600);
   --color-sky-700: var(--color-sky-700);
   --color-sky-800: var(--color-sky-800);
+  --color-sky-900: var(--color-sky-900);
 
   --color-sage-50: var(--color-sage-50);
   --color-sage-100: var(--color-sage-100);
