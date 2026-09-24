@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -50,18 +51,49 @@ export default function Header() {
     <header
       className={`sticky top-0 z-40 transition-colors duration-300 ${
         transparent ? "bg-transparent" : "bg-sand-50"
-      } ${isHeroPage ? "-mb-[78px]" : ""}`}
+      } ${isHeroPage ? "-mb-[84px]" : ""}`}
     >
       {transparent && (
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-transparent" />
       )}
       <div className={`relative ${transparent ? "" : "border-b border-sand-100"}`}>
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
-          <Link href="/" className="flex flex-col leading-tight">
-            {project ? (
-              <>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+          <Link href="/" aria-label={`${SITE_NAME} home`} className="flex min-w-0 items-center gap-3">
+            {/* Brand logo — full lockup on sm+, symbol only on small screens when
+                a project name sits beside it. Reverse (light) artwork over the
+                transparent hero header, regular artwork on the solid header. */}
+            <span className={`relative shrink-0 ${project ? "h-[60px] w-14 sm:w-[186px]" : "h-[60px] w-[186px]"}`}>
+              <Image
+                src={transparent ? "/brand/mygriha-logo-reverse.svg" : "/brand/mygriha-logo.svg"}
+                alt={SITE_NAME}
+                width={186}
+                height={60}
+                priority
+                className={`h-[60px] w-auto ${project ? "hidden sm:block" : ""} ${
+                  transparent ? "[filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.5))]" : ""
+                }`}
+              />
+              {project && (
+                <Image
+                  src={transparent ? "/brand/mygriha-mark-reverse.svg" : "/brand/mygriha-mark.svg"}
+                  alt=""
+                  width={56}
+                  height={56}
+                  priority
+                  className={`h-14 w-14 sm:hidden ${
+                    transparent ? "[filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.5))]" : ""
+                  }`}
+                />
+              )}
+            </span>
+            {project && (
+              <span
+                className={`flex min-w-0 flex-col border-l pl-3 leading-tight ${
+                  transparent ? "border-white/40" : "border-sand-100"
+                }`}
+              >
                 <span
-                  className={`font-display text-2xl font-bold tracking-tight transition-colors ${
+                  className={`truncate font-display text-lg font-bold tracking-tight transition-colors sm:text-xl ${
                     transparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" : "text-sky-700"
                   }`}
                 >
@@ -74,10 +106,6 @@ export default function Header() {
                 >
                   {AUTHORIZED_CHANNEL_PARTNER_LABEL}
                 </span>
-              </>
-            ) : (
-              <span className="font-display text-2xl font-bold tracking-tight text-sky-700">
-                {SITE_NAME}
               </span>
             )}
           </Link>

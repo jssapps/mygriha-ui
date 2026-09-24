@@ -19,12 +19,7 @@ module.exports = {
   // (favicon.ico, icon.svg, apple-icon.png) as if they were pages — exclude
   // them, along with admin/api routes.
   //
-  // Also excludes the primary project's own /projects/[slug] URL: that page
-  // sets <link rel="canonical"> to "/" (see app/projects/[slug]/page.tsx,
-  // getPrimaryProject check) since it renders identical content to the
-  // homepage. Listing both in the sitemap while the canonical disagrees
-  // sends a mixed signal to crawlers, so only "/" is listed. Keep this in
-  // sync with src/data/projects.ts if the featured/primary project changes.
+  // Also excludes "/", which redirects to /projects (see next.config.ts).
   exclude: [
     "/admin",
     "/admin/*",
@@ -32,7 +27,7 @@ module.exports = {
     "/favicon.ico",
     "/icon.svg",
     "/apple-icon.png",
-    "/projects/signature-regal-electronic-city-chandapura",
+    "/",
   ],
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/", disallow: ["/admin", "/api"] }],

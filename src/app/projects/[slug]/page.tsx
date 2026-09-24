@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllProjects, getPrimaryProject, getProjectBySlug } from "@/data/projects";
+import { getAllProjects, getProjectBySlug } from "@/data/projects";
 import ProjectPageContent from "@/components/ProjectPageContent";
 import { buildProjectSeoMeta } from "@/lib/seo";
 
@@ -18,11 +18,9 @@ export async function generateMetadata({
   if (!project) return {};
 
   const { title, description } = buildProjectSeoMeta(project);
-  // The primary project renders identical content on "/" — canonicalize
-  // this route to the homepage instead of self-canonicalizing, so the two
-  // URLs don't compete as duplicate content for the same search queries.
-  const isPrimary = getPrimaryProject().slug === project.slug;
-  const canonicalPath = isPrimary ? "/" : `/projects/${project.slug}`;
+  // "/" now redirects to /projects (see next.config.ts), so every project
+  // page — including the primary one — self-canonicalizes.
+  const canonicalPath = `/projects/${project.slug}`;
 
   return {
     title,

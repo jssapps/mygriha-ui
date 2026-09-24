@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, SITE_NAME } from "@/lib/constants";
 
@@ -6,7 +7,9 @@ export default function Footer() {
     <footer className="mt-auto border-t border-sand-100">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="text-lg font-bold tracking-tight text-sky-700">{SITE_NAME}</p>
+          <Link href="/" aria-label={`${SITE_NAME} home`} className="inline-block">
+            <Image src="/brand/mygriha-logo.svg" alt={SITE_NAME} width={223} height={72} className="h-[72px] w-auto" />
+          </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-sand-900/60">
             A private advisory for a curated set of newly launched apartment
             projects along Bangalore&apos;s Electronic City corridor — every
