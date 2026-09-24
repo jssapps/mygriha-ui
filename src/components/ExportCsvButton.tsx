@@ -10,8 +10,9 @@ const COLUMNS: Array<{ key: keyof Lead; label: string }> = [
   { key: "phone", label: "Phone" },
   { key: "email", label: "Email" },
   { key: "projectName", label: "Project" },
-  { key: "preferredVisitDate", label: "Preferred Visit Date" },
+  { key: "preferredVisitDate", label: "Preferred Contact/Visit Date" },
   { key: "preferredCallTime", label: "Preferred Call Time" },
+  { key: "message", label: "Message" },
   { key: "sourcePage", label: "Source Page" },
   { key: "status", label: "Status" },
 ];

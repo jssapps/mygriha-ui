@@ -20,8 +20,9 @@ const COLUMNS: ColumnDef[] = [
   { key: "phone", label: "Phone" },
   { key: "email", label: "Email" },
   { key: "projectName", label: "Project" },
-  { key: "preferredVisitDate", label: "Preferred Visit Date" },
+  { key: "preferredVisitDate", label: "Preferred Contact/Visit Date" },
   { key: "preferredCallTime", label: "Preferred Call Time" },
+  { key: "message", label: "Message" },
   { key: "sourcePage", label: "Source" },
   { key: "status", label: "Status" },
 ];
@@ -269,6 +270,9 @@ export default function LeadsTable({ leads: initialLeads }: { leads: Lead[] }) {
                   <td className="px-4 py-3 text-sand-900/70">{lead.projectName || "—"}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-sand-900/70">{lead.preferredVisitDate || "—"}</td>
                   <td className="px-4 py-3 text-sand-900/70">{lead.preferredCallTime || "—"}</td>
+                  <td className="min-w-[16rem] max-w-sm whitespace-pre-line break-words px-4 py-3 text-sand-900/70">
+                    {lead.message || "—"}
+                  </td>
                   <td className="px-4 py-3 text-sand-900/70">{lead.sourcePage}</td>
                   <td className="px-4 py-3">
                     <select

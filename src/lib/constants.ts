@@ -7,6 +7,11 @@ export const PREFERRED_CALL_TIMES = [
 
 export const SITE_NAME = "BangaloreNest";
 
+/** Lead-form project choice meaning "not tied to one project". It is the
+ * default whenever the form can't infer the project from the page. */
+export const ALL_PROJECTS_SLUG = "all";
+export const ALL_PROJECTS_LABEL = "All Projects";
+
 // Shown under the project name in the header brand block and atop the lead
 // popup — this site represents builders as their channel partner, not the
 // builder itself.

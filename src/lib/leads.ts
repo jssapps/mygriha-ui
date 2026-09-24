@@ -14,6 +14,7 @@ export interface LeadInput {
   projectName?: string;
   preferredVisitDate?: string;
   preferredCallTime?: string;
+  message?: string;
   sourcePage: string;
 }
 
@@ -73,6 +74,7 @@ export async function getLeads(): Promise<Lead[]> {
       projectName: data.projectName ?? "",
       preferredVisitDate: data.preferredVisitDate ?? "",
       preferredCallTime: data.preferredCallTime ?? "",
+      message: data.message ?? "",
       sourcePage: data.sourcePage ?? "",
       createdAt,
       updatedAt,

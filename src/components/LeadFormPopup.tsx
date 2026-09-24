@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LeadForm from "./LeadForm";
-import { getAllProjects, getPrimaryProject, getProjectBySlug } from "@/data/projects";
+import { getAllProjects, getProjectBySlug } from "@/data/projects";
+import { SITE_NAME } from "@/lib/constants";
 import {
   OPEN_LEAD_POPUP_EVENT,
   buildPopupSourcePage,
@@ -11,34 +12,14 @@ import {
   type OpenLeadPopupDetail,
 } from "@/lib/leadPopupEvent";
 
-const DISMISS_KEY = "leadPopupDismissed";
-const SHOW_DELAY_MS = 5000;
+// The popup opens only when a visitor clicks an "Enquire" / "Book Site Visit"
+// style button (OpenLeadPopupButton) — it never appears on its own.
 const AUTO_CLOSE_AFTER_SUCCESS_MS = 2500;
-const EXCLUDED_PATH_PREFIXES = ["/admin"];
 
 export default function LeadFormPopup() {
   const pathname = usePathname();
-  const pathnameRef = useRef(pathname);
   const [visible, setVisible] = useState(false);
   const [intent, setIntent] = useState<LeadPopupIntent>("enquire");
-
-  useEffect(() => {
-    pathnameRef.current = pathname;
-  }, [pathname]);
-
-  useEffect(() => {
-    if (sessionStorage.getItem(DISMISS_KEY)) return;
-
-    const timer = setTimeout(() => {
-      const current = pathnameRef.current;
-      if (!EXCLUDED_PATH_PREFIXES.some((prefix) => current.startsWith(prefix))) {
-        setIntent("enquire");
-        setVisible(true);
-      }
-    }, SHOW_DELAY_MS);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     function handleOpen(event: Event) {
@@ -51,7 +32,6 @@ export default function LeadFormPopup() {
   }, []);
 
   function handleClose() {
-    sessionStorage.setItem(DISMISS_KEY, "1");
     setVisible(false);
   }
 
@@ -61,19 +41,18 @@ export default function LeadFormPopup() {
 
   if (!visible) return null;
 
-  // Same fallback rule as the header: the matched slug's project, or the
-  // primary featured project on every other page.
+  // On a project's own page the dropdown starts on that project; everywhere
+  // else it starts empty so the visitor picks one from the full list.
   const projectSlugMatch = pathname.match(/^\/projects\/([^/]+)/);
-  const project =
-    (projectSlugMatch && getProjectBySlug(projectSlugMatch[1])) || getPrimaryProject();
+  const project = projectSlugMatch ? getProjectBySlug(projectSlugMatch[1]) : undefined;
 
   const projectOptions = getAllProjects().map((p) => ({ slug: p.slug, name: p.name }));
 
   return (
-    <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-sand-900/60 px-4"
-      onClick={handleClose}
-    >
+    // The overlay scrolls, so a form taller than the screen (e.g. with the
+    // optional details open on a phone) can still be scrolled into view.
+    <div className="fixed inset-0 z-[60] overflow-y-auto bg-sand-900/60 px-4 py-8" onClick={handleClose}>
+      <div className="flex min-h-full items-center justify-center">
       <div
         className="animate-popup-in relative w-full max-w-sm"
         onClick={(e) => e.stopPropagation()}
@@ -88,13 +67,14 @@ export default function LeadFormPopup() {
         </button>
         <LeadForm
           projects={projectOptions}
-          defaultProjectSlug={project.slug}
+          defaultProjectSlug={project?.slug}
           sourcePage={buildPopupSourcePage(intent, pathname)}
-          brandName={project.name}
+          brandName={project?.name ?? SITE_NAME}
           compact
           onSuccess={handleSuccess}
           showWhatsAppCta={false}
         />
+      </div>
       </div>
     </div>
   );
