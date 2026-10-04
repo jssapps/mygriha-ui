@@ -20,11 +20,10 @@ export const AUTHORIZED_CHANNEL_PARTNER_LABEL = "Authorized channel partner";
 export const SITE_TAGLINE =
   "A private property advisory for newly launched apartment projects along Bangalore's Electronic City corridor — curated access, direct builder pricing, no brokerage.";
 
-// PLACEHOLDER — replace with the real contact number before launch.
 // Digits only, with country code, no "+" or spaces (wa.me format).
-export const WHATSAPP_NUMBER = "919999999999";
+export const WHATSAPP_NUMBER = "916361302887";
 
-export const CONTACT_PHONE_DISPLAY = "+91 99999 99999";
-// PLACEHOLDER — replace with the real contact number before launch (tel: format).
-export const CONTACT_PHONE_TEL = "+919999999999";
+export const CONTACT_PHONE_DISPLAY = "+91 63613 02887";
+// tel: format.
+export const CONTACT_PHONE_TEL = "+916361302887";
 export const CONTACT_EMAIL = "admin@mygriha.in";
