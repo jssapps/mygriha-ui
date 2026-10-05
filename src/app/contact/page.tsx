@@ -8,7 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { buildBreadcrumbJsonLd } from "@/lib/jsonld";
 import { buttonClasses, cardClasses, iconBadgeClasses } from "@/lib/ui";
-import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "@/lib/constants";
+import { CONTACT_EMAIL, CONTACT_PHONES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -55,7 +55,19 @@ export default function ContactPage() {
         <div className="space-y-4">
           <ContactCard
             label="Phone"
-            detail={CONTACT_PHONE_DISPLAY}
+            detail={
+              <span className="flex flex-col gap-1">
+                {CONTACT_PHONES.map((phone) => (
+                  <a
+                    key={phone.tel}
+                    href={`tel:${phone.tel}`}
+                    className="tabular-nums transition-colors hover:text-sky-700"
+                  >
+                    {phone.display}
+                  </a>
+                ))}
+              </span>
+            }
             icon={
               <path
                 d="M4 4h3l1.5 4-2 1.5a10 10 0 0 0 5 5l1.5-2 4 1.5v3a1 1 0 0 1-1 1C10.5 18 3 10.5 3 5a1 1 0 0 1 1-1Z"
@@ -103,7 +115,7 @@ function ContactCard({
   icon,
 }: {
   label: string;
-  detail: string;
+  detail: React.ReactNode;
   icon: React.ReactNode;
 }) {
   return (
@@ -115,7 +127,7 @@ function ContactCard({
       </span>
       <div>
         <p className="text-sm font-semibold text-sand-900">{label}</p>
-        <p className="mt-1 text-sm text-sand-900/60">{detail}</p>
+        <div className="mt-1 text-sm text-sand-900/60">{detail}</div>
       </div>
     </div>
   );

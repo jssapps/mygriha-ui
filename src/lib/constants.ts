@@ -26,4 +26,10 @@ export const WHATSAPP_NUMBER = "916361302887";
 export const CONTACT_PHONE_DISPLAY = "+91 63613 02887";
 // tel: format.
 export const CONTACT_PHONE_TEL = "+916361302887";
+/** Every number shown in the Contact page's phone card (first is the primary
+ * number used by Call Now / WhatsApp buttons above). */
+export const CONTACT_PHONES = [
+  { display: "+91 63613 02887", tel: "+916361302887" },
+  { display: "+91 79075 89241", tel: "+917907589241" },
+] as const;
 export const CONTACT_EMAIL = "admin@mygriha.in";
