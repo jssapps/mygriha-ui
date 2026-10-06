@@ -26,6 +26,7 @@ export default function ContactPage() {
   ]);
 
   const shuffledPhones = [...CONTACT_PHONES].sort(() => Math.random() - 0.5);
+  console.log("Shuffled phones:", shuffledPhones);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
