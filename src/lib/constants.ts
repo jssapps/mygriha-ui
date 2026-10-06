@@ -5,7 +5,7 @@ export const PREFERRED_CALL_TIMES = [
   "Anytime",
 ] as const;
 
-export const SITE_NAME = "BangaloreNest";
+export const SITE_NAME = "MyGriha.in";
 
 /** Lead-form project choice meaning "not tied to one project". It is the
  * default whenever the form can't infer the project from the page. */
