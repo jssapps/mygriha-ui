@@ -30,11 +30,13 @@ export const projects: Project[] = [
     description:
       "Signature Regal is a low-density apartment community taking shape on 8.5 acres just off Chandapura, a short drive from Electronic City's tech park cluster. Five towers with 590 units are planned around a generous landscaped core, with 80% of the land kept open rather than built on — so the towers face gardens and walking paths instead of each other. Home sizes are pitched at growing families and upgraders who have outgrown a starter flat: the plans run from a comfortable 2 BHK up to a full 3.5 BHK, all with usable, regularly-shaped rooms rather than odd corners. The location trades a bit of distance to the very center of Electronic City for a quieter, less congested stretch of Hosur Road, with the upcoming Satellite Town Ring Road expected to shorten that commute further once it opens. For buyers priced out of the immediate Electronic City core, it's positioned as a way to stay close to that job cluster without paying its premium.",
 
-    // VERIFY: aggregator-reported RERA number was PRM/KA/RERA/1251/310/AG/170824/000174
-    // (homznspace listing, 2026-07-26). Not displayed publicly on this site until
-    // Signature Dwellings confirms it directly and it is cross-checked on the
-    // Karnataka RERA portal — show "RERA registration awaited" until then.
-    reraStatus: "awaited",
+    // Karnataka RERA project registration number, supplied by the site owner
+    // on 2026-10-06. (An older aggregator listing had reported a different
+    // number, PRM/KA/RERA/1251/310/AG/170824/000174 — superseded by this one.)
+    reraStatus: "registered",
+    reraId: "PRM/KA/RERA/1251/308/PR/040926/008911",
+    reraAckId: "ACK/KA/RERA/1251/308/PR/220726/010442",
+    reraUrl: "https://rera.karnataka.gov.in/",
 
     configurations: [
       {
@@ -81,11 +83,9 @@ export const projects: Project[] = [
     clubhouseAreaSqft: 30000,
     amenitiesCount: 100,
 
-    // VERIFY: possession was listed only as "2030 onwards (tentative)" —
-    // confirm a firm date/quarter with the builder before publishing it
-    // as a commitment anywhere in marketing copy.
-    possessionDate: "2030 (tentative)",
-    possessionConfirmed: false,
+    // Possession year supplied by the site owner on 2026-10-06.
+    possessionDate: "2030",
+    possessionConfirmed: true,
 
     // Grouping into categories is an editorial choice for presentation, not
     // a builder claim; the full 100+ item brochure list is not yet
@@ -219,7 +219,7 @@ export const projects: Project[] = [
       {
         question: "Is Signature Regal RERA registered?",
         answer:
-          "RERA registration is currently awaited. The registration number will be published here once confirmed directly with Signature Dwellings and cross-checked on the Karnataka RERA portal.",
+          "Yes. Signature Regal is registered with Karnataka RERA — registration number PRM/KA/RERA/1251/308/PR/040926/008911 (acknowledgement number ACK/KA/RERA/1251/308/PR/220726/010442). You can verify it on the Karnataka RERA portal at rera.karnataka.gov.in.",
       },
       {
         question: "What configurations are available?",
@@ -229,7 +229,7 @@ export const projects: Project[] = [
       {
         question: "When is possession expected?",
         answer:
-          "Possession is currently listed as 2030 (tentative) — an aggregator-reported figure, not a firm date confirmed by the builder. Treat it as indicative until confirmed.",
+          "Possession is expected in 2030.",
       },
       {
         question: "How do I book a site visit?",

@@ -15,7 +15,7 @@ import AmenitiesList from "@/components/AmenitiesList";
 import Gallery from "@/components/Gallery";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import OpenLeadPopupButton from "@/components/OpenLeadPopupButton";
-import CallNowButton from "@/components/CallNowButton";
+import ReraDetails from "@/components/ReraDetails";
 import Stat from "@/components/Stat";
 import ProjectHighlights, { buildHighlights } from "@/components/ProjectHighlights";
 import LocationConnectivity from "@/components/LocationConnectivity";
@@ -24,7 +24,6 @@ import WhyInvest from "@/components/WhyInvest";
 import BuilderInfo from "@/components/BuilderInfo";
 import Faqs from "@/components/Faqs";
 import { buttonClasses } from "@/lib/ui";
-import { CONTACT_PHONE_DISPLAY } from "@/lib/constants";
 
 const SECTIONS = [
   { id: "overview", label: "Overview" },
@@ -124,16 +123,12 @@ export default function ProjectPageContent({
               </OpenLeadPopupButton>
             </div>
 
-            <p className="mt-6 text-sm text-sand-50/80">
-              Possession: {project.possessionDate} · RERA:{" "}
-              {/* {project.reraStatus === "registered" && project.reraId
-                ? project.reraId
-                : "registration awaited"}{" "}
-              ·{" "}
-              <CallNowButton className="underline underline-offset-2 hover:text-white">
-                Call {CONTACT_PHONE_DISPLAY}
-              </CallNowButton> */}
-            </p>
+            <ReraDetails
+              possessionDate={project.possessionDate}
+              acknowledgementNo={project.reraAckId}
+              registrationNo={project.reraStatus === "registered" ? project.reraId : undefined}
+              websiteUrl={project.reraUrl}
+            />
           </div>
         </div>
       </section>

@@ -93,6 +93,10 @@ export interface Project {
   reraStatus: ReraStatus;
   /** Only populate once confirmed directly with the builder; leave undefined while reraStatus is "awaited". */
   reraId?: string;
+  /** RERA acknowledgement number issued on application (before/alongside registration). */
+  reraAckId?: string;
+  /** Link to the state RERA portal where buyers can verify the registration. */
+  reraUrl?: string;
   configurations: ProjectConfiguration[];
   totalAreaAcres: number;
   totalUnits: number;
