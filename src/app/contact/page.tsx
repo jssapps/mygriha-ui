@@ -25,6 +25,8 @@ export default function ContactPage() {
     { name: "Contact", path: "/contact" },
   ]);
 
+  const shuffledPhones = [...CONTACT_PHONES].sort(() => Math.random() - 0.5);
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <JsonLd data={breadcrumbJsonLd} />
@@ -57,7 +59,7 @@ export default function ContactPage() {
             label="Phone"
             detail={
               <span className="flex flex-col gap-1">
-                {CONTACT_PHONES.map((phone) => (
+                {shuffledPhones.map((phone) => (
                   <a
                     key={phone.tel}
                     href={`tel:${phone.tel}`}
