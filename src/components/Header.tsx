@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AUTHORIZED_CHANNEL_PARTNER_LABEL, CONTACT_PHONE_DISPLAY, SITE_NAME } from "@/lib/constants";
+import { AUTHORIZED_CHANNEL_PARTNER_LABEL, CONTACT_PHONES, SITE_NAME } from "@/lib/constants";
 import { buttonClasses } from "@/lib/ui";
 import { getPrimaryProject, getProjectBySlug } from "@/data/projects";
 import CallNowButton from "./CallNowButton";
@@ -47,11 +47,14 @@ export default function Header() {
     return () => window.removeEventListener("scroll", updateScrolled);
   }, [isHeroPage]);
 
+  const shuffledPhones = [...CONTACT_PHONES].sort(() => Math.random() - 0.5);
+
+  const joinedPhones = shuffledPhones.map((phone) => phone.display).join(" / ");
+
   return (
     <header
-      className={`sticky top-0 z-40 transition-colors duration-300 ${
-        transparent ? "bg-transparent" : "bg-sand-50"
-      } ${isHeroPage ? "-mb-[84px]" : ""}`}
+      className={`sticky top-0 z-40 transition-colors duration-300 ${transparent ? "bg-transparent" : "bg-sand-50"
+        } ${isHeroPage ? "-mb-[84px]" : ""}`}
     >
       {transparent && (
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-transparent" />
@@ -69,9 +72,8 @@ export default function Header() {
                 width={186}
                 height={60}
                 priority
-                className={`h-[60px] w-auto ${project ? "hidden sm:block" : ""} ${
-                  transparent ? "[filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.5))]" : ""
-                }`}
+                className={`h-[60px] w-auto ${project ? "hidden sm:block" : ""} ${transparent ? "[filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.5))]" : ""
+                  }`}
               />
               {project && (
                 <Image
@@ -80,29 +82,25 @@ export default function Header() {
                   width={56}
                   height={56}
                   priority
-                  className={`h-14 w-14 sm:hidden ${
-                    transparent ? "[filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.5))]" : ""
-                  }`}
+                  className={`h-14 w-14 sm:hidden ${transparent ? "[filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.5))]" : ""
+                    }`}
                 />
               )}
             </span>
             {project && (
               <span
-                className={`flex min-w-0 flex-col border-l pl-3 leading-tight ${
-                  transparent ? "border-white/40" : "border-sand-100"
-                }`}
+                className={`flex min-w-0 flex-col border-l pl-3 leading-tight ${transparent ? "border-white/40" : "border-sand-100"
+                  }`}
               >
                 <span
-                  className={`truncate font-display text-lg font-bold tracking-tight transition-colors sm:text-xl ${
-                    transparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" : "text-sky-700"
-                  }`}
+                  className={`truncate font-display text-lg font-bold tracking-tight transition-colors sm:text-xl ${transparent ? "text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" : "text-sky-700"
+                    }`}
                 >
                   {project.name}
                 </span>
                 <span
-                  className={`text-[9px] font-medium uppercase tracking-wide transition-colors ${
-                    transparent ? "text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]" : "text-sand-900/50"
-                  }`}
+                  className={`text-[9px] font-medium uppercase tracking-wide transition-colors ${transparent ? "text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]" : "text-sand-900/50"
+                    }`}
                 >
                   {AUTHORIZED_CHANNEL_PARTNER_LABEL}
                 </span>
@@ -115,11 +113,10 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  transparent
+                className={`text-sm font-medium transition-colors ${transparent
                     ? "text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)] hover:text-earth-400"
                     : "text-sand-900/70 hover:text-sky-700"
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
@@ -133,9 +130,8 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className={`flex h-9 w-9 items-center justify-center rounded-md border transition-colors lg:hidden ${
-              transparent ? "border-white/50 text-white" : "border-sand-100 text-sand-900"
-            }`}
+            className={`flex h-9 w-9 items-center justify-center rounded-md border transition-colors lg:hidden ${transparent ? "border-white/50 text-white" : "border-sand-100 text-sand-900"
+              }`}
             aria-label="Toggle menu"
             aria-expanded={open}
           >
@@ -164,7 +160,7 @@ export default function Header() {
               </Link>
             ))}
             <CallNowButton className="block py-2 text-sm font-medium text-sand-900/70">
-              Call {CONTACT_PHONE_DISPLAY}
+              Call {joinedPhones}
             </CallNowButton>
             <OpenLeadPopupButton className={`mt-2 block w-full text-center ${buttonClasses("primary", "sm")}`}>
               Enquire Now
