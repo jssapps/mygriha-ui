@@ -86,7 +86,7 @@ export default function ContactPage() {
               </>
             }
           />
-          <ContactCard
+          {/* <ContactCard
             label="WhatsApp"
             detail="Tap the WhatsApp icon in the corner of this page to start a chat instantly."
             icon={
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 strokeLinejoin="round"
               />
             }
-          />
+          /> */}
         </div>
 
         <LeadForm

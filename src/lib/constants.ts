@@ -23,7 +23,7 @@ export const SITE_TAGLINE =
 // Digits only, with country code, no "+" or spaces (wa.me format).
 export const WHATSAPP_NUMBER = "916361302887";
 
-export const CONTACT_PHONE_DISPLAY = "+91 63613 02887";
+export const CONTACT_PHONE_DISPLAY = "+91 63613 02887/+91 79075 89241";
 // tel: format.
 export const CONTACT_PHONE_TEL = "+916361302887";
 /** Every number shown in the Contact page's phone card (first is the primary
