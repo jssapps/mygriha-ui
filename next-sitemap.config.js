@@ -13,7 +13,7 @@ const PRIORITY_BY_PATH = {
 };
 
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
+  siteUrl: process.env.NEXT_SITE_URL || "https://www.mygriha.in",
   generateRobotsTxt: true,
   // next-sitemap's default crawler also picks up static app-icon files
   // (favicon.ico, icon.svg, apple-icon.png) as if they were pages — exclude
